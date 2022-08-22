@@ -28,6 +28,22 @@ const App = () => {
     lg: false,
   });
 
+  useEffect(() => {
+    const db_costumer = localStorage.getItem("cad_cliente")
+    ? JSON.parse(localStorage.getItem("cad_cliente"))
+    : [];
+
+    setData(db_costumer);
+  }, [setData]);
+
+  const handleRemove = (email) => {
+    const newArray = data.filter((item) => item.email !== email);
+
+    setData(newArray);
+
+    localStorage.setItem("cad_cliente", JSON.stringify(newArray));
+  };
+
   return (
     <Flex
       h="100vh"
