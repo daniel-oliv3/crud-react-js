@@ -3,7 +3,7 @@
 
 **Comandos para a criação do projeto**
 ```
-
+Yarn create vite ./ --template react
 ```
 
 
