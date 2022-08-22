@@ -22,6 +22,12 @@ const App = () => {
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState([]);
 
+  /* Verifica se e mobile ou não */
+  const isMobile = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
   return (
     <Flex
       h="100vh"
