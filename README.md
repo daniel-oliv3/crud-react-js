@@ -9,7 +9,12 @@ Yarn create vite ./ --template react
 ```
 yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion @chakra-ui/icons
 ```
+**Roda o projeto**
+```
+yarn dev
+```
 
+- Localhost: http://127.0.0.1:5173/
 
 
 
