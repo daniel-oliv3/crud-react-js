@@ -34,6 +34,16 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             data[dataEdit.index] = { name, email };
         }
 
+        const newDataArray = !Object.keys(dataEdit).length
+        ? [...(data ? data : []), { name, email }]
+        : [...(data ? data : [])];
+
+        localStorage.setItem("cad_cliente", JSON.stringify(newDataArray));
+
+        setData(newDataArray);
+
+        onClose();
+    };
         const emailAllreadyExists = () => {
             if(dataEdit.email !== email && data?.length){
                 return data.find((item) => item.email === email);
@@ -42,7 +52,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             return false;
         };
 
-    }
+    
 
     return (
       <>
@@ -52,7 +62,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
             <ModalContent>
                 <ModalHeader>Cadastro de Clientes</ModalHeader>
                 <ModalCloseButton />
-                <ModalBady>
+                <ModalBody>
                     <FormControl display="flex" flexDir="column" gap={4}>
                         <Box>
                             <FormLabel>Nome</FormLabel>
@@ -71,7 +81,7 @@ const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }) => {
                             />
                         </Box>
                     </FormControl>
-                </ModalBady>
+                </ModalBody>
 
                 <ModalFooter justifyContent="start">
                     <Button colorScheme="green" mr={3} onClick={handleSave}>
