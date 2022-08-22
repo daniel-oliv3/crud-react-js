@@ -49,10 +49,42 @@ const App = () => {
                 <Th p={0}></Th>
               </Tr>
             </Thead>
+            <Tbody>
+              {data.map(({ name, email }, index) => (
+                <Tr key={index} cursor="pointer" _hover={{ bg: "gray.100" }}>
+                  <Td maxW={isMobile ? 5 : 100}>{name}</Td>
+                  <Td maxW={isMobile ? 5 : 100}>{email}</Td>
+                  <Td p={0}>
+                    <EditIcon 
+                      fontSize={20}
+                      onClick={() => [
+                        setDataEdit({ name, email, index }),
+                        onOpen(),
+                      ]}
+                    />
+                  </Td>
+                  <Td>
+                    <DeleteIcon 
+                      fontSize={20}
+                      onClick={() => handleRemove(email)}
+                    />
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
           </Table>          
         </Box>
       </Box>
-     
+     {isOpen && (
+      <ModalComp
+        isOpen={isOpen}
+        onClose={onClose}
+        data={data}
+        setData={setData}
+        dataEdit={dataEdit}
+        setDataEdit={setDataEdit}
+      />
+     )}
     </Flex>
   )
 }
