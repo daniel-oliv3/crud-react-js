@@ -5,8 +5,10 @@
 ```
 Yarn create vite ./ --template react
 ```
-
-
+**Chakra-Ui**
+```
+yarn add @chakra-ui/react @emotion/react @emotion/styled framer-motion @chakra-ui/icons
+```
 
 
 
